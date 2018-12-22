@@ -15,6 +15,7 @@ class TwoFactorFactory implements SecurityFactoryInterface
 
     public const DEFAULT_CHECK_PATH = '/2fa_check';
     public const DEFAULT_AUTH_FORM_PATH = '/2fa';
+    public const DEFAULT_AUTH_FORM_PATH_PARAMETER = 'auth_form_path';
     public const DEFAULT_ALWAYS_USE_DEFAULT_TARGET_PATH = false;
     public const DEFAULT_TARGET_PATH = '/';
     public const DEFAULT_AUTH_CODE_PARAMETER_NAME = '_auth_code';
@@ -46,6 +47,7 @@ class TwoFactorFactory implements SecurityFactoryInterface
         $builder
             ->scalarNode('check_path')->defaultValue(self::DEFAULT_CHECK_PATH)->end()
             ->scalarNode('auth_form_path')->defaultValue(self::DEFAULT_AUTH_FORM_PATH)->end()
+            ->scalarNode('auth_form_path_parameter')->defaultValue(self::DEFAULT_AUTH_FORM_PATH_PARAMETER)->end()
             ->booleanNode('always_use_default_target_path')->defaultValue(self::DEFAULT_ALWAYS_USE_DEFAULT_TARGET_PATH)->end()
             ->scalarNode('default_target_path')->defaultValue(self::DEFAULT_TARGET_PATH)->end()
             ->scalarNode('success_handler')->defaultNull()->end()

@@ -35,6 +35,7 @@ class TwoFactorListenerTest extends TestCase
     private const FORM_PATH = '/form_path';
     private const CHECK_PATH = '/check_path';
     private const AUTH_CODE_PARAM = 'auth_code_param';
+    private const AUTH_FORM_PATH = 'auth_form_path';
     private const TRUSTED_PARAM = 'trusted_param';
     private const FIREWALL_NAME = 'firewallName';
     private const TWO_FACTOR_PROVIDERS = ['provider1', 'provider2'];
@@ -115,6 +116,7 @@ class TwoFactorListenerTest extends TestCase
     private $requestParams = [
         self::AUTH_CODE_PARAM => 'authCode',
         self::TRUSTED_PARAM => null,
+        self::AUTH_FORM_PATH => null,
     ];
 
     /**

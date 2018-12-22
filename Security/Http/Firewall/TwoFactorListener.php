@@ -32,6 +32,7 @@ class TwoFactorListener implements ListenerInterface
 {
     private const DEFAULT_OPTIONS = [
         'auth_form_path' => TwoFactorFactory::DEFAULT_AUTH_FORM_PATH,
+        'auth_form_path_parameter' => TwoFactorFactory::DEFAULT_AUTH_FORM_PATH_PARAMETER,
         'check_path' => TwoFactorFactory::DEFAULT_CHECK_PATH,
         'auth_code_parameter_name' => TwoFactorFactory::DEFAULT_AUTH_CODE_PARAMETER_NAME,
         'trusted_parameter_name' => TwoFactorFactory::DEFAULT_TRUSTED_PARAMETER_NAME,
@@ -187,6 +188,10 @@ class TwoFactorListener implements ListenerInterface
 
     private function isAuthFormRequest(Request $request): bool
     {
+        if ($authFormPath = ParameterBagUtils::getRequestParameterValue($request, $this->options['auth_form_path_parameter'])) {
+            return $this->httpUtils->checkRequestPath($request, $authFormPath);
+        }
+
         return $this->httpUtils->checkRequestPath($request, $this->options['auth_form_path']);
     }
 

@@ -50,6 +50,7 @@ class TwoFactorFactoryTest extends TestCase
 two_factor:
     check_path: /check_path
     auth_form_path: /auth_form_path
+    auth_form_path_parameter: auth_form_path
     always_use_default_target_path: true
     default_target_path: /default_target_path
     success_handler: my_success_handler
@@ -100,6 +101,7 @@ EOF;
 
         $this->assertEquals(TwoFactorFactory::DEFAULT_CHECK_PATH, $processedConfiguration['check_path']);
         $this->assertEquals(TwoFactorFactory::DEFAULT_AUTH_FORM_PATH, $processedConfiguration['auth_form_path']);
+        $this->assertEquals(TwoFactorFactory::DEFAULT_AUTH_FORM_PATH_PARAMETER, $processedConfiguration['auth_form_path_parameter']);
         $this->assertEquals(TwoFactorFactory::DEFAULT_ALWAYS_USE_DEFAULT_TARGET_PATH, $processedConfiguration['always_use_default_target_path']);
         $this->assertEquals(TwoFactorFactory::DEFAULT_TARGET_PATH, $processedConfiguration['default_target_path']);
         $this->assertNull($processedConfiguration['success_handler']);
@@ -123,6 +125,7 @@ EOF;
 
         $this->assertEquals('/check_path', $processedConfiguration['check_path']);
         $this->assertEquals('/auth_form_path', $processedConfiguration['auth_form_path']);
+        $this->assertEquals('auth_form_path', $processedConfiguration['auth_form_path_parameter']);
         $this->assertTrue($processedConfiguration['always_use_default_target_path']);
         $this->assertEquals('/default_target_path', $processedConfiguration['default_target_path']);
         $this->assertEquals('my_success_handler', $processedConfiguration['success_handler']);
